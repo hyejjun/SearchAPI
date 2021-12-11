@@ -1,24 +1,51 @@
 import Styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
 import useInput from '../hooks/useInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { searchApi } from '../searchApi'
 
 const SearchBar = () => {
     const [search, onChangeSearch] = useInput('')
-    const [content, setContent] = useState('')
+    const [content, setContent] = useState<string>('')
+
+    const [data, setData] = useState<Array<Object>>([])
+    const [searching, setSearching] = useState<Boolean>(false)
 
     const searchSubmit = () => {
         if (search !== '') {
-            console.log(search);
+            setSearching(true);
+
+            searchApi(search)
+                .then((res) => {
+                    setData(res)
+                })
+                .catch((err) => {
+                    alert('검색 결과를 찾아오지 못했습니다.');
+                });
+            setSearching(false);
         }
     }
+
+    useEffect(()=>{
+        console.log(data);
+        
+        data.map((v,k)=>{
+            console.log(v);
+            
+            // console.log(v.contents);
+            
+        })
+    },[data])
+
+
 
     return (
         <>
             <SearchWrap>
-                <SearchInput type="text" value={search} onChange={onChangeSearch}/>
+                <SearchInput type="text" value={search} onChange={onChangeSearch} />
                 <SearchIconWrap onClick={searchSubmit}>
-                    <SearchIcon />
+                    {searching ? '검색 중..' : <SearchIcon />}
+
                 </SearchIconWrap>
             </SearchWrap>
         </>
