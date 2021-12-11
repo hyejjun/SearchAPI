@@ -6,7 +6,7 @@ export const searchApi = (content) => {
   return axios
     .request({
       method: 'get',
-      url: `https://dapi.kakao.com/v2/search/web?query=${content}`,
+      url: `https://dapi.kakao.com/v2/search/blog?query=${content}`,
       headers: {
         Authorization: `KakaoAK ${restApi}`,
       },

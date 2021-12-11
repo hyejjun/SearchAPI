@@ -12,7 +12,9 @@ const SearchInfo = () => {
         contents: string,
         datetime: Date,
         title: string,
-        url: string
+        url: string,
+        blogname : string,
+        thumbnail : string
     }
     const [data, setData] = useState<ArrEle[]>([])
 
