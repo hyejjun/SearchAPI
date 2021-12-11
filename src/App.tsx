@@ -1,6 +1,5 @@
 import React from 'react';
-import SearchBar from './components/SearchBar'
-import List from './components/List'
+import SearchInfo from './components/SearchInfo';
 import Layout from './layout/Layout';
 import './App.css';
 
@@ -8,8 +7,7 @@ function App() {
   return (
     <>
       <Layout>
-        <SearchBar />
-        <List />
+        <SearchInfo/>
       </Layout>
     </>
   );
