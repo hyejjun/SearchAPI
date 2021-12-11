@@ -1,12 +1,23 @@
 import Styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
+import useInput from '../hooks/useInput';
+import { useState } from 'react';
 
 const SearchBar = () => {
+    const [search, onChangeSearch] = useInput('')
+    const [content, setContent] = useState('')
+
+    const searchSubmit = () => {
+        if (search !== '') {
+            console.log(search);
+        }
+    }
+
     return (
         <>
             <SearchWrap>
-                <SearchInput type="text" />
-                <SearchIconWrap>
+                <SearchInput type="text" value={search} onChange={onChangeSearch}/>
+                <SearchIconWrap onClick={searchSubmit}>
                     <SearchIcon />
                 </SearchIconWrap>
             </SearchWrap>
@@ -44,10 +55,10 @@ const SearchIconWrap = Styled.span`
     outline: 0;
     border: 2px solid #000;
     & > svg {
-        width: 60px;
-        height: 50px;
-        padding-top: 5px;
+        width: 100%;
+        height: 48px;
+        padding: 5px 4px 2px 8px;
         box-sizing: border-box;
-        cursor : pointer;
+        cursor: pointer;
     }
 `
