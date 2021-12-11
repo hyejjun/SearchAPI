@@ -1,10 +1,8 @@
 import Styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = (props:any) => {
-    
-
-    const {search, onChangeSearch,searchSubmit,searching } = props
+const SearchBar = (props: any) => {
+    const { search, onChangeSearch, searchSubmit, searching } = props
 
     return (
         <>

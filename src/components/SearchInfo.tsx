@@ -5,7 +5,7 @@ import useInput from '../hooks/useInput';
 import { useEffect, useState } from 'react';
 import { searchApi } from '../searchApi'
 
-const SearchInfo = ()=>{
+const SearchInfo = () => {
     const [search, onChangeSearch] = useInput('')
     const [content, setContent] = useState<string>('')
     interface ArrEle {
@@ -33,11 +33,10 @@ const SearchInfo = ()=>{
         }
     }
 
-    
-    return(
+    return (
         <>
-           <SearchBar search={search} onChangeSearch={onChangeSearch} searchSubmit={searchSubmit} searching={searching}/>
-           <List data={data}/>
+            <SearchBar search={search} onChangeSearch={onChangeSearch} searchSubmit={searchSubmit} searching={searching} />
+            <List data={data} />
         </>
     )
 }
