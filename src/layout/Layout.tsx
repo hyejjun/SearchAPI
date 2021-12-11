@@ -1,17 +1,31 @@
 import Styled from 'styled-components'
 import * as React from 'react';
 
-interface Layout {
+interface LayoutI {
     children: React.ReactNode;
-    // any other props that come into the component
 }
 
-const Layout = ({ children }: Layout)=>{
-    return(
-        <div>
-            {children}
-        </div>
+const Layout = ({ children }: LayoutI) => {
+    return (
+        <LayoutWrap>
+            <LayoutInnerWrap>
+                {children}
+            </LayoutInnerWrap>
+        </LayoutWrap>
     )
 }
 
 export default Layout
+
+
+const LayoutWrap = Styled.div`
+    width : 100%;
+
+`
+
+const LayoutInnerWrap = Styled.div`
+    width : 1200px;
+    height : auto;
+    margin : 0 auto;
+    background-color : #d0d0e2;
+`

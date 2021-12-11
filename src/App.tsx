@@ -1,16 +1,16 @@
 import React from 'react';
 import SearchBar from './components/SearchBar'
 import List from './components/List'
-import Wrap from './layout/Layout';
+import Layout from './layout/Layout';
 import './App.css';
 
 function App() {
   return (
     <>
-      <Wrap>
+      <Layout>
         <SearchBar />
         <List />
-      </Wrap>
+      </Layout>
     </>
   );
 }
