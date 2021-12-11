@@ -5,7 +5,7 @@ const List = ()=>{
         <>
             <div>
                 <ul>
-                    <li> 맛집</li>
+                   
                 </ul>
             </div>
         </>
