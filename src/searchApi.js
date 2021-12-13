@@ -6,13 +6,15 @@ export const searchApi = (content) => {
   return axios
     .request({
       method: 'get',
-      url: `https://dapi.kakao.com/v2/search/blog?query=${content}`,
+      url: `https://dapi.kakao.com/v2/search/blog?&page=1&size=20&query=${content}`,
       headers: {
         Authorization: `KakaoAK ${restApi}`,
       },
     })
     .then((res) => {
+      console.log(res.data.documents);
       return res.data.documents;
+      
     })
     .catch((err) => {
       throw new Error(err);
