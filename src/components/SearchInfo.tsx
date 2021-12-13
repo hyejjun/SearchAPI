@@ -1,5 +1,5 @@
 // import Styled from 'styled-components'
-import List from './List'
+import SearchedList from './SearchedList'
 import SearchBar from './SearchBar'
 import useInput from '../hooks/useInput';
 import { useEffect, useState } from 'react';
@@ -38,7 +38,7 @@ const SearchInfo = () => {
     return (
         <>
             <SearchBar search={search} onChangeSearch={onChangeSearch} searchSubmit={searchSubmit} searching={searching} />
-            <List data={data} />
+            <SearchedList data={data} />
         </>
     )
 }

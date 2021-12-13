@@ -1,6 +1,6 @@
 // import Styled from 'styled-components'
 
-const List = (props: any) => {
+const SearchedList = (props: any) => {
     const { data } = props
 
     const getList = () => {
@@ -57,4 +57,4 @@ const List = (props: any) => {
     )
 }
 
-export default List
+export default SearchedList

@@ -12,9 +12,7 @@ export const searchApi = (content) => {
       },
     })
     .then((res) => {
-      console.log(res.data.documents);
       return res.data.documents;
-      
     })
     .catch((err) => {
       throw new Error(err);
