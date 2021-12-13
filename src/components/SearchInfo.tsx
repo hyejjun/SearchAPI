@@ -10,7 +10,7 @@ const SearchInfo = () => {
     const [search, onChangeSearch] = useInput('')
     const [content, setContent] = useState<string>('')
 
-    const [listType, setListType] = useState<Boolean>(false)
+    
     interface ArrEle {
         contents: string,
         datetime: Date,
@@ -38,6 +38,8 @@ const SearchInfo = () => {
         }
     }
 
+    const [listType, setListType] = useState<Boolean>(false)
+
     const selectSearchedList = () => {
         setListType(false)
     }
@@ -45,6 +47,15 @@ const SearchInfo = () => {
     const selectLikedList = () => {
         setListType(true)
     }
+
+    
+    // const [likeStatus, setLikeStatus] = useState<Boolean>(false)
+
+    const clickedLike = (title:string, thumbnail:string)=>{
+        console.log(title, thumbnail);
+        
+    }
+    
 
     return (
         <>
@@ -60,7 +71,7 @@ const SearchInfo = () => {
             {
                 listType
                     ? <LikedList />
-                    : <SearchedList data={data} />
+                    : <SearchedList data={data} clickedLike={clickedLike} />
             }
 
         </>

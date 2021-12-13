@@ -1,7 +1,7 @@
 // import Styled from 'styled-components'
 
 const SearchedList = (props: any) => {
-    const { data } = props
+    const { data, clickedLike } = props
 
     const getList = () => {
         function deleteHtml(htmlTxt: string) {
@@ -36,6 +36,9 @@ const SearchedList = (props: any) => {
                                 }
                             </span>
                         </a>
+                        <span onClick={() => { clickedLike(v.title,v.thumbnail) }}>
+                            좋아용
+                        </span>
                     </li>
 
                 </>
