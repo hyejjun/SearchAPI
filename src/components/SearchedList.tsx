@@ -24,20 +24,20 @@ const SearchedList = (props: any) => {
         let list = data.map((v: any, k: any) => {
             return (
                 <>
-                    <ul key={k}>
-                        <li>
-                            <a href={v.url} target="_blank">
-                                <span>
-                                    <img src={v.thumbnail} />
-                                </span>
-                                <span>
-                                    {
-                                        deleteHtml(v.title)
-                                    }
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
+
+                    <li key={k}>
+                        <a href={v.url} target="_blank">
+                            <span>
+                                <img src={v.thumbnail} />
+                            </span>
+                            <span>
+                                {
+                                    deleteHtml(v.title)
+                                }
+                            </span>
+                        </a>
+                    </li>
+
                 </>
             )
         })
@@ -47,11 +47,11 @@ const SearchedList = (props: any) => {
     return (
         <>
             <div>
-
-                {
-                    getList()
-                }
-
+                <ul>
+                    {
+                        getList()
+                    }
+                </ul>
             </div>
         </>
     )
