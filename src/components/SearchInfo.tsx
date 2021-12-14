@@ -51,26 +51,22 @@ const SearchInfo = () => {
         setListType(true)
     }
 
-
-    interface likeArrEle {
-        // title: string,
-        url: string,
-        // findItem : Object
-    }
-    const [likeArray, setLikeArray] = useState<likeArrEle[]>([])
+    const likedList = useSelector((state:RootState) => state.reducers.list.likedList)  
 
     const clickedLike = (title:string, thumbnail:string, url:string)=>{
-        let likeState = {
+        let likeContent = {
             url,
             title,
             thumbnail
         }
-        likeArray.push(likeState)
-        dispatch(likeList(likeArray))
+        let list = [...likedList]
+
+        list.push(likeContent)
+
+        dispatch(likeList(list))
     }
 
     
-    const likedList = useSelector((state:RootState) => state.reducers.list.likedList)  
 
     const deleteFromLikelist = (url:string) =>{
          // 좋아요 취소하기
@@ -102,7 +98,7 @@ const SearchInfo = () => {
             </SelectType>
             {
                 listType
-                    ? <LikedList likeArray={likeArray} deleteFromLikelist={deleteFromLikelist}/>
+                    ? <LikedList  deleteFromLikelist={deleteFromLikelist}/>
                     : <SearchedList data={data} clickedLike={clickedLike} />
             }
 

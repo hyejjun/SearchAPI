@@ -29,9 +29,7 @@ export const likeList = (data: Array<Object>) => {
     }
 }
 
-export const deleteLikeList = (data: Array<Object>) => {
-    console.log("여기 === ", data);
-    
+export const deleteLikeList = (data: Array<Object>) => {    
     return {
         type: DELETE_LIKED_LIST,
         data
@@ -56,9 +54,7 @@ const reducer = (state: ListState = initialState, action: ListAction) => {
                 ...state,
                 likedList: [...action.data]
             }
-        case DELETE_LIKED_LIST:
-            console.log("보자 === ",action.data);
-            
+        case DELETE_LIKED_LIST:            
             return {
                 ...state,
                 likedList: [...action.data]

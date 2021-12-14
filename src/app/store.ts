@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 // import counterReducer from '../features/counter/counterSlice';
 import reducers from '../reducers/index';
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 export const store = configureStore({
@@ -9,7 +9,7 @@ export const store = configureStore({
     // counter: counterReducer,
     reducers
   },
-  middleware: [thunk, logger]
+  middleware: [thunk]
 });
 
 export type AppDispatch = typeof store.dispatch;
