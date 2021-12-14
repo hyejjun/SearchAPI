@@ -6,7 +6,9 @@ import { useEffect, useState } from 'react';
 import { searchApi } from '../searchApi'
 import LikedList from './LikedList';
 import { likeList } from '../reducers/list';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from "../app/store"
+
 
 const SearchInfo = () => {
     const dispatch = useDispatch()
@@ -58,6 +60,7 @@ const SearchInfo = () => {
     }
     const [likeArray, setLikeArray] = useState<likeArrEle[]>([])
 
+
     const clickedLike = (title:string, thumbnail:string, url:string)=>{
         console.log(title, thumbnail);
         let likeState = {
@@ -65,31 +68,21 @@ const SearchInfo = () => {
             title,
             thumbnail
         }
-
         likeArray.push(likeState)
-
-
-
         dispatch(likeList(likeArray));
+    }
 
-
-        // 좋아요 취소하기
-        // persist 되어야 함 - 새로 고침 후 상태유지
-        const findItem = likeArray.find(function(item){
+    const likdeList = useSelector((state:RootState) => state.reducers.list.likedList);    
+    const deleteFromLikelist = (url:string) =>{
+         // 좋아요 취소하기
+        
+        const findItem = likdeList.find(function(item){
             return item.url === `${url}`
         });
+        const idx = likdeList.indexOf(findItem);
+        likdeList.splice(idx,1)
 
-        console.log(findItem);
-        
-        // const idx = likeArray.indexOf(findItem);
-        // likeArray.splice(idx,1)
-
-
-        // likeArray.push(likeState)
-
-        console.log(likeArray);
-        
-
+        console.log(likdeList);
     }
     
 
@@ -106,7 +99,7 @@ const SearchInfo = () => {
             </SelectType>
             {
                 listType
-                    ? <LikedList likeArray={likeArray}/>
+                    ? <LikedList likeArray={likeArray} deleteFromLikelist={deleteFromLikelist}/>
                     : <SearchedList data={data} clickedLike={clickedLike} />
             }
 

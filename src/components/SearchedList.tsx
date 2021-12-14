@@ -5,7 +5,7 @@ const SearchedList = (props: any) => {
     const { data, clickedLike } = props
 
     const getList = () => {
-        let list = data.map((v: any, k: any) => {
+        let list = data.map((v: any, k: number) => {
             return (
                 <>
                     <li key={`${k}`}>

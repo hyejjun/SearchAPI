@@ -4,12 +4,12 @@ import { RootState } from "../app/store"
 // import { RootState } from "../reducers"
 
 const LikedList = (props:any) => {
-    // const {likeArray} = props
+    const {deleteFromLikelist} = props
 
     const likeList = useSelector((state:RootState) => state.reducers.list.likedList);    
 
     const getLikedList = () => {
-        let list = likeList.map((v: any, k: any) => {
+        let list = likeList.map((v: any, k: number) => {
             return (
                 <>
                     <li key={`${k}`}>
@@ -23,6 +23,7 @@ const LikedList = (props:any) => {
                                 }
                             </span>
                         </a>
+                        <span onClick={()=>{deleteFromLikelist(v.url)}}> X </span>
                     </li>
                 </>
             )
