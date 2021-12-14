@@ -1,24 +1,31 @@
 import Styled from "styled-components";
 
 export const ListWrap = Styled.div`
+    width: 1200px;
+    display: flex;
     & > ul > li {
-        display : inline-block;
+        float: left;
         width : 600px;
-        height: 400px;
+        height: 450px;
     }
 
     & > ul > li > div {
         width: 300px;
-        height: 350px;
+        height: 400px;
         margin: 0 auto;
-        border : 1px solid #666;
-        padding: 25px;
-        box-sizing : border-box;
+        border: 1px solid #666;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .thumbnail{
+        display: block;
+        height: 200px;
     }
 
     .thumbnail > img{
-        width : 150px;
-        height : 150px;
+        width: 175px;
+        height: 170px;
         display: block;
         margin : 0 auto;
         
@@ -26,21 +33,25 @@ export const ListWrap = Styled.div`
 
     .title{
         display: block;
-        height: 100px;
+        height: 95px;
+        text-align :center;
+        font-size : 17px;
+        color : black;
     }
 
     .like{
 
     }
 
-    .delete{
+    .delete,
+    .like {
         cursor : pointer;
-        
     }
 
-    .delete > svg {
+    .delete > svg,
+    .like > svg {
         float : right;
         width : 50px;
-        height : 50px;
+        height : 45px;
     }
 `

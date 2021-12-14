@@ -1,8 +1,7 @@
 import Styled from 'styled-components'
 import { deleteHtml } from "../hooks/deleteHtml"
 import { ListWrap } from './ListCSS'
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 
 const SearchedList = (props: any) => {
@@ -25,7 +24,7 @@ const SearchedList = (props: any) => {
                             </span>
                         </a>
                         <span className="like" key={`like_${k}`} onClick={() => { clickedLike(v.title, v.thumbnail, v.url) }}>
-                            좋아용
+                            <BookmarkAddedIcon/>
                         </span>
                     </div>
                 </li>
