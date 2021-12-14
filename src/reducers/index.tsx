@@ -8,14 +8,15 @@ import { ListState } from './list'
 import {Reducer} from 'redux'
 
 const persistConfig = {
-    key: 'nextjs',
-    whitelist: ['fromClient'], // make sure it does not clash with server keys
+    key: 'root',
+    whitelist: ['list'], // make sure it does not clash with server keys
     storage
 };
 
 export interface State {
     list:ListState,
 }
+
 
 const combinedReducers = combineReducers({
    list
