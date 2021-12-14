@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 import SearchedList from './SearchedList'
 import SearchBar from './SearchBar'
 import useInput from '../hooks/useInput';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { searchApi } from '../searchApi'
 import LikedList from './LikedList';
 import { likeList, deleteLikeList } from '../reducers/list';
@@ -14,7 +14,6 @@ const SearchInfo = () => {
     const dispatch = useDispatch()
 
     const [search, onChangeSearch] = useInput('')
-    const [content, setContent] = useState<string>('')
     interface ArrEle {
         contents: string,
         datetime: Date,

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import list from './list'
 import { AnyAction } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
-import { persistStore, persistReducer } from 'redux-persist'
+import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import { ListState } from './list'
 import {Reducer} from 'redux'

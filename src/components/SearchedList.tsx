@@ -9,9 +9,9 @@ const SearchedList = (props: any) => {
             return (
                 
                     <li key={`${k}`}>
-                        <a href={v.url} target="_blank">
+                        <a href={v.url} target="_blank" rel="noreferrer">
                             <span>
-                                <img src={v.thumbnail} />
+                                <img src={v.thumbnail} alt="thumbnail"/>
                             </span>
                             <span>
                                 {

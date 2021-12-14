@@ -1,6 +1,3 @@
-import { AnyAction } from 'redux'
-import { HYDRATE } from 'next-redux-wrapper';
-
 export interface ListState {
     searchedList: Array<any>;
     likedList: Array<any>;
