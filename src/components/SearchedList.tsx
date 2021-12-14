@@ -5,13 +5,10 @@ const SearchedList = (props: any) => {
     const { data, clickedLike } = props
 
     const getList = () => {
-        
-
         let list = data.map((v: any, k: any) => {
             return (
                 <>
-
-                    <li key={k}>
+                    <li key={`${k}`}>
                         <a href={v.url} target="_blank">
                             <span>
                                 <img src={v.thumbnail} />
@@ -22,11 +19,10 @@ const SearchedList = (props: any) => {
                                 }
                             </span>
                         </a>
-                        <span onClick={() => { clickedLike(v.title,v.thumbnail) }}>
+                        <span key={`like_${k}`} onClick={() => { clickedLike(v.title,v.thumbnail,v.url) }}>
                             좋아용
                         </span>
                     </li>
-
                 </>
             )
         })

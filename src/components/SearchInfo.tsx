@@ -5,12 +5,14 @@ import useInput from '../hooks/useInput';
 import { useEffect, useState } from 'react';
 import { searchApi } from '../searchApi'
 import LikedList from './LikedList';
+import { likeList } from '../reducers/list';
+import { useDispatch } from 'react-redux';
 
 const SearchInfo = () => {
+    const dispatch = useDispatch()
+
     const [search, onChangeSearch] = useInput('')
     const [content, setContent] = useState<string>('')
-
-    
     interface ArrEle {
         contents: string,
         datetime: Date,
@@ -48,12 +50,46 @@ const SearchInfo = () => {
         setListType(true)
     }
 
-    
-    // const [likeStatus, setLikeStatus] = useState<Boolean>(false)
 
-    const clickedLike = (title:string, thumbnail:string)=>{
+    interface likeArrEle {
+        // title: string,
+        url: string,
+        // findItem : Object
+    }
+    const [likeArray, setLikeArray] = useState<likeArrEle[]>([])
+
+    const clickedLike = (title:string, thumbnail:string, url:string)=>{
         console.log(title, thumbnail);
+        let likeState = {
+            url,
+            title,
+            thumbnail
+        }
+
+        likeArray.push(likeState)
+
+
+
+        dispatch(likeList(likeArray));
+
+
+        // 좋아요 취소하기
+        // persist 되어야 함 - 새로 고침 후 상태유지
+        const findItem = likeArray.find(function(item){
+            return item.url === `${url}`
+        });
+
+        console.log(findItem);
         
+        // const idx = likeArray.indexOf(findItem);
+        // likeArray.splice(idx,1)
+
+
+        // likeArray.push(likeState)
+
+        console.log(likeArray);
+        
+
     }
     
 
@@ -70,7 +106,7 @@ const SearchInfo = () => {
             </SelectType>
             {
                 listType
-                    ? <LikedList />
+                    ? <LikedList likeArray={likeArray}/>
                     : <SearchedList data={data} clickedLike={clickedLike} />
             }
 
