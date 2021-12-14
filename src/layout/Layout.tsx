@@ -27,5 +27,4 @@ const LayoutInnerWrap = Styled.div`
     width : 1200px;
     height : auto;
     margin : 0 auto;
-    background-color : #d0d0e2;
 `

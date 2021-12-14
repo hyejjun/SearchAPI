@@ -1,5 +1,9 @@
-// import Styled from 'styled-components'
+import Styled from 'styled-components'
 import { deleteHtml } from "../hooks/deleteHtml"
+import { ListWrap } from './ListCSS'
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+
 
 const SearchedList = (props: any) => {
     const { data, clickedLike } = props
@@ -7,23 +11,25 @@ const SearchedList = (props: any) => {
     const getList = () => {
         let list = data.map((v: any, k: number) => {
             return (
-                
-                    <li key={`${k}`}>
+
+                <li key={`${k}`}>
+                    <div>
                         <a href={v.url} target="_blank" rel="noreferrer">
-                            <span>
-                                <img src={v.thumbnail} alt="thumbnail"/>
+                            <span className="thumbnail">
+                                <img src={v.thumbnail} alt="thumbnail" />
                             </span>
-                            <span>
+                            <span className="title">
                                 {
                                     deleteHtml(v.title)
                                 }
                             </span>
                         </a>
-                        <span key={`like_${k}`} onClick={() => { clickedLike(v.title,v.thumbnail,v.url) }}>
+                        <span className="like" key={`like_${k}`} onClick={() => { clickedLike(v.title, v.thumbnail, v.url) }}>
                             좋아용
                         </span>
-                    </li>
-                
+                    </div>
+                </li>
+
             )
         })
         return list
@@ -31,15 +37,16 @@ const SearchedList = (props: any) => {
 
     return (
         <>
-            <div>
+            <ListWrap>
                 <ul>
                     {
                         getList()
                     }
                 </ul>
-            </div>
+            </ListWrap>
         </>
     )
 }
 
 export default SearchedList
+
