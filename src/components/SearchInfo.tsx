@@ -5,7 +5,7 @@ import useInput from '../hooks/useInput';
 import { useEffect, useState } from 'react';
 import { searchApi } from '../searchApi'
 import LikedList from './LikedList';
-import { likeList } from '../reducers/list';
+import { likeList, deleteLikeList } from '../reducers/list';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../app/store"
 
@@ -29,7 +29,7 @@ const SearchInfo = () => {
 
     const searchSubmit = () => {
         if (search !== '') {
-            setSearching(true);
+            setSearching(true)
 
             searchApi(search)
                 .then((res) => {
@@ -38,7 +38,7 @@ const SearchInfo = () => {
                 .catch((err) => {
                     alert('검색 결과를 찾아오지 못했습니다.');
                 });
-            setSearching(false);
+            setSearching(false)
         }
     }
 
@@ -60,29 +60,33 @@ const SearchInfo = () => {
     }
     const [likeArray, setLikeArray] = useState<likeArrEle[]>([])
 
-
     const clickedLike = (title:string, thumbnail:string, url:string)=>{
-        console.log(title, thumbnail);
         let likeState = {
             url,
             title,
             thumbnail
         }
         likeArray.push(likeState)
-        dispatch(likeList(likeArray));
+        dispatch(likeList(likeArray))
     }
 
-    const likdeList = useSelector((state:RootState) => state.reducers.list.likedList);    
+    
+    const likedList = useSelector((state:RootState) => state.reducers.list.likedList)  
+
     const deleteFromLikelist = (url:string) =>{
          // 좋아요 취소하기
-        
-        const findItem = likdeList.find(function(item){
+        const findItem = likedList.find(function(item){
             return item.url === `${url}`
         });
-        const idx = likdeList.indexOf(findItem);
-        likdeList.splice(idx,1)
+        const idx = likedList.indexOf(findItem);
+        likedList.splice(idx,1)
 
-        console.log(likdeList);
+        let updatedLikeList = [...likedList]  
+        
+        console.log(updatedLikeList);
+        
+        
+        dispatch(deleteLikeList(updatedLikeList))
     }
     
 

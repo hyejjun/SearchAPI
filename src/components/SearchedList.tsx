@@ -7,7 +7,7 @@ const SearchedList = (props: any) => {
     const getList = () => {
         let list = data.map((v: any, k: number) => {
             return (
-                <>
+                
                     <li key={`${k}`}>
                         <a href={v.url} target="_blank">
                             <span>
@@ -23,7 +23,7 @@ const SearchedList = (props: any) => {
                             좋아용
                         </span>
                     </li>
-                </>
+                
             )
         })
         return list
