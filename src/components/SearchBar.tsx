@@ -2,12 +2,12 @@ import Styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = (props: any) => {
-    const { search, onChangeSearch, searchSubmit, searching } = props
+    const { search, onChangeSearch, searchSubmit, searching, onKeyPress } = props
 
     return (
         <>
             <SearchWrap>
-                <SearchInput type="text" value={search} onChange={onChangeSearch} />
+                <SearchInput type="text" value={search} onChange={onChangeSearch} onKeyPress={onKeyPress}/>
                 <SearchIconWrap onClick={searchSubmit}>
                     {searching ? '검색 중..' : <SearchIcon />}
                 </SearchIconWrap>

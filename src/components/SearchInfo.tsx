@@ -2,14 +2,12 @@ import Styled from 'styled-components'
 import SearchedList from './SearchedList'
 import SearchBar from './SearchBar'
 import useInput from '../hooks/useInput';
-import { useState } from 'react';
+import { useState, KeyboardEvent  } from 'react';
 import { searchApi } from '../searchApi'
 import LikedList from './LikedList';
 import { likeList, deleteLikeList } from '../reducers/list';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../app/store"
-
-
 
 const SearchInfo = () => {
     const dispatch = useDispatch()
@@ -39,6 +37,12 @@ const SearchInfo = () => {
                     alert('검색 결과를 찾아오지 못했습니다.');
                 });
             setSearching(false)
+            setListType(false)
+        }
+    }
+    const onKeyPress = (e:KeyboardEvent<HTMLImageElement>) =>{
+        if(e.key == "Enter"){
+            searchSubmit()
         }
     }
 
@@ -66,9 +70,7 @@ const SearchInfo = () => {
 
         dispatch(likeList(list))
     }
-
     
-
     const deleteFromLikelist = (url:string) =>{
          // 좋아요 취소하기
         const findItem = likedList.find(function(item){
@@ -79,16 +81,14 @@ const SearchInfo = () => {
 
         let updatedLikeList = [...likedList]  
         
-        console.log(updatedLikeList);
-        
         
         dispatch(deleteLikeList(updatedLikeList))
     }
-    
+
 
     return (
         <>
-            <SearchBar search={search} onChangeSearch={onChangeSearch} searchSubmit={searchSubmit} searching={searching} />
+            <SearchBar search={search} onChangeSearch={onChangeSearch} searchSubmit={searchSubmit} searching={searching} onKeyPress={onKeyPress}/>
             <SelectType>
                 <li onClick={selectSearchedList}>
                     전체
