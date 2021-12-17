@@ -8,6 +8,7 @@ import LikedList from './LikedList';
 import { likeList, deleteLikeList } from '../reducers/list';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../app/store"
+import { useRef } from 'react';
 
 const SearchInfo = () => {
     const dispatch = useDispatch()
@@ -41,7 +42,7 @@ const SearchInfo = () => {
         }
     }
     const onKeyPress = (e:KeyboardEvent<HTMLImageElement>) =>{
-        if(e.key == "Enter"){
+        if(e.key === "Enter"){
             searchSubmit()
         }
     }
@@ -86,6 +87,13 @@ const SearchInfo = () => {
     }
 
 
+    
+    const [check,setCheck] = useState(false)
+    
+    const checkState = ()=>{
+        setCheck(prev=>!prev)
+    }
+
     return (
         <>
             <SearchBar search={search} onChangeSearch={onChangeSearch} searchSubmit={searchSubmit} searching={searching} onKeyPress={onKeyPress}/>
@@ -99,8 +107,8 @@ const SearchInfo = () => {
             </SelectType>
             {
                 listType
-                    ? <LikedList  deleteFromLikelist={deleteFromLikelist}/>
-                    : <SearchedList data={data} clickedLike={clickedLike} />
+                    ? <LikedList  deleteFromLikelist={deleteFromLikelist} />
+                    : <SearchedList data={data} clickedLike={clickedLike} checkState={checkState} check={check}/>
             }
 
         </>
